@@ -17,13 +17,8 @@ function App() {
   const [playerScore, setPlayerScore] = useState(0);
   const [dealerScore, setDealerScore] = useState(0);
 
-  const [dealerAceCount, setDealerAceCount] = useState(0);
-  const [yourAceCount, setYourAceCount] = useState(0);
-
   const [isHidden, setIsHidden] = useState(true);
   const [decks, setDecks] = useState([]);
-
-  const [canHit, setCanHit] = useState(true);
 
   const [playerCards, setPlayerCards] = useState([]);
   const [dealerCards, setDealerCards] = useState([]);
@@ -31,6 +26,12 @@ function App() {
   useEffect(() => {
     startNewGame(); 
   }, []);
+
+  useEffect(() => {
+    if(playerScore === 21) {
+      // alert('Black Jack!');
+    }
+  }, [playerScore]);
 
   const startNewGame = () => {
     const initDecks = generateDeck();
@@ -81,8 +82,27 @@ function App() {
     
     setPlayerCards(playerCards);
     setDealerCards(dealerCards);
+    setDecks(deck);
 
     return {playerCards, dealerCards};
+  }
+
+  const addCard = (user) => {
+    let remaningDecks = [...decks];
+    let cards = [];
+    
+    if(user === PLAYER) {
+      cards = [...playerCards];
+      cards.push(remaningDecks.pop());
+      setPlayerCards(cards);
+    } else if (user === DEALER) {
+      cards = [...dealerCards];
+      cards.push(remaningDecks.pop());
+      setDealerCards(cards);
+    }
+    setDecks(remaningDecks);
+
+    return cards;
   }
 
   const calcScore = (cards, user) => {
@@ -135,15 +155,20 @@ function App() {
 
 
   const onReset = _ => {
-
+    setIsHidden(true);
+    startNewGame(); 
   }
 
   const onHit = _ => {
-
+    if(playerScore < 21) {
+      const cards = addCard(PLAYER);
+      calcScore(cards, PLAYER);
+    }
   } 
 
   const onStay = _ => {
-
+    setIsHidden(false);
+    // 점수 계산
   }
 
   return (
@@ -167,7 +192,7 @@ function App() {
               return CARD[card.suit][12];
             }
           } else {
-            return CARD.S[card.number]
+            return CARD[card.suit][card.number]
           }
         })
       }
@@ -188,7 +213,7 @@ function App() {
               return CARD[card.suit][12];
             }
           } else {
-            return CARD.S[card.number]
+            return CARD[card.suit][card.number]
           }
         })
       }
