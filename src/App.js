@@ -5,6 +5,14 @@ import './App.css'
 const PLAYER = "Player";
 const DEALER = "Dealer";
 
+const CARD = {
+  S: ["🂡", "🂢", "🂣", "🂤", "🂥", "🂦", "🂧", "🂨", "🂩", "🂪", "🂫", "🂭", "🂮"],
+  H: ["🂱", "🂲", "🂳", "🂴", "🂵", "🂶", "🂷", "🂸", "🂹", "🂺", "🂻", "🂽", "🂾"],
+  D: ["🃁", "🃂", "🃃", "🃄", "🃅", "🃆", "🃇", "🃈", "🃉", "🃊", "🃋", "🃍", "🃎"],
+  C: ["🃑", "🃒", "🃓", "🃔", "🃕", "🃖", "🃗", "🃘", "🃙", "🃚", "🃛", "🃝", "🃞"],
+  BACK: "🂠"
+}
+
 function App() {
   const [playerScore, setPlayerScore] = useState(0);
   const [dealerScore, setDealerScore] = useState(0);
@@ -80,7 +88,7 @@ function App() {
   const calcScore = (cards, user) => {
     let totalScore = 0;
 
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
       totalScore += getValue(card);
     });
 
@@ -121,7 +129,7 @@ function App() {
       }
     }
 
-    return parseInt(value);
+    return parseInt(value) + 1;
   }
 
 
@@ -142,11 +150,48 @@ function App() {
     <>
     <button onClick={onReset}>Reset</button>
     <h2>Dealer: <span id="dealer-sum">{dealerScore}</span></h2>
-    <div id="dealer-cards">
+    <div id="dealer-cards" style={{fontSize:"800%"}}>
+      {
+        dealerCards.map((card, index) => {
+          if(isHidden === true && index > 0) {
+            return CARD.BACK;
+          }
+          if(isNaN(card.number)) {
+            if(card.number === "A") {
+              return CARD[card.suit][0];
+            } else if(card.number === "J") {
+              return CARD[card.suit][10];
+            } else if(card.number === "Q") {
+              return CARD[card.suit][11];
+            } else if(card.number === "K") {
+              return CARD[card.suit][12];
+            }
+          } else {
+            return CARD.S[card.number]
+          }
+        })
+      }
     </div>
 
     <h2>You: <span id="your-sum">{playerScore}</span></h2>
-    <div id="your-cards">
+    <div id="your-cards" style={{fontSize:"800%"}}>
+      {
+        playerCards.map((card) => {
+          if(isNaN(card.number)) {
+            if(card.number === "A") {
+              return CARD[card.suit][0];
+            } else if(card.number === "J") {
+              return CARD[card.suit][10];
+            } else if(card.number === "Q") {
+              return CARD[card.suit][11];
+            } else if(card.number === "K") {
+              return CARD[card.suit][12];
+            }
+          } else {
+            return CARD.S[card.number]
+          }
+        })
+      }
     </div>
 
     <br/>
