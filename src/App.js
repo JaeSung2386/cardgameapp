@@ -149,7 +149,7 @@ function App() {
     let dealerCards = [];
 
     for (let i = 0; i < 4; i++) {
-      if (i % 2 == 0) {
+      if (i % 2 === 0) {
         playerCards.push(deck.pop());
       } else {
         dealerCards.push(deck.pop());
