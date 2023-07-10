@@ -35,8 +35,10 @@
       "last 1 safari version"
     ]
   },
-  "testPathIgnorePatterns": [
-    "/node_modules/",
-    "/e2e-"
-  ]
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/"
+    ]
+  }
 }
