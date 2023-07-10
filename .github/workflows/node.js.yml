@@ -2,12 +2,11 @@ name: React CI
 
 on:
   push:
-    branches:
-      - "master"
+    branches: [ master ]
 
 jobs:
   build:
-    runs-on: self-hosed
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [16.x]
