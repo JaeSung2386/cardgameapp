@@ -34,9 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "jest" : {
-    "preset": "react-native",
-    "testRegex": "(/tests/.*|(\\.|/)(test))\\.js$"
- }
+  }
 }
