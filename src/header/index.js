@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
-import { SiWordpress, SiTistory, SiGithub } from "react-icons/si";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 import Logo from "./logo";
+import SocialMedia from "./socialmedia";
 
 function Header() {
   return (
@@ -15,25 +15,7 @@ function Header() {
           <ReactSearchAutocomplete />
         </div>
         {/* social media */}
-        <div className="social-media">
-          <ul className="social-media-desktop">
-            <li>
-              <a href="https://webveloper.dev/" target="_thapa">
-                <SiWordpress />
-              </a>
-            </li>
-            <li>
-              <a href="https://webveloper.dev/" target="_thapa">
-                <SiTistory />
-              </a>
-            </li>
-            <li>
-              <a href="https://webveloper.dev/" target="_thapa">
-                <SiGithub />
-              </a>
-            </li>
-          </ul>
-        </div>
+        <SocialMedia />
       </nav>
     </header>
   );
