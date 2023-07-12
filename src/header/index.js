@@ -3,17 +3,13 @@ import "./style.css";
 import { SiWordpress, SiTistory, SiGithub } from "react-icons/si";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
+import Logo from "./logo";
+
 function Header() {
   return (
     <header>
       <nav className="main-nav">
-        {/* logo */}
-        <div className="logo">
-          <h2>
-            <span>W</span>eb
-            <span>G</span>ame
-          </h2>
-        </div>
+        <Logo />
         {/* menu */}
         <div className="search-bar">
           <ReactSearchAutocomplete />
