@@ -20,12 +20,6 @@
   list-style: none;
 }
 
-.search-bar {
-  display: grid;
-  align-items: center;
-  grid-column: 3/4;
-}
-
 /* .menu-link {
   grid-column: 3/4;
 }

@@ -1,0 +1,5 @@
+.search-bar {
+  display: grid;
+  align-items: center;
+  grid-column: 3/4;
+}

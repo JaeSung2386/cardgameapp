@@ -3,6 +3,7 @@ import "./style.css";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 import Logo from "./logo";
+import SearchBar from "./searchbar";
 import SocialMedia from "./socialmedia";
 
 function Header() {
@@ -10,11 +11,7 @@ function Header() {
     <header>
       <nav className="main-nav">
         <Logo />
-        {/* menu */}
-        <div className="search-bar">
-          <ReactSearchAutocomplete />
-        </div>
-        {/* social media */}
+        <SearchBar />
         <SocialMedia />
       </nav>
     </header>
